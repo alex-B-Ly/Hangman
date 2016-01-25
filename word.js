@@ -17,12 +17,13 @@ module.exports = function(wrd){
 
   // Iterate over lets array and check if guess is equal to charac property
     // TODO Inquire about adding 1 to checkIfLetterFound, did they mean whatToReturn?
+    // TODO Get rid of console logs
   this.checkIfLetterFound = function(guessLetter){
     var whatToReturn = 0;
 
     self.lets.forEach(function(letter){
       if(letter.charac === guessLetter){
-        letter.appear === true;
+        letter.appear = true;
         console.log('Found one!');
       }else{
         console.log('Try Again.');
@@ -38,6 +39,17 @@ module.exports = function(wrd){
         return self.found;
       }
     });
+  }
+
+  this.wordRender = function(){
+    var str = '';
+
+    self.lets.forEach(function(letter){
+      var currentLetter = letter.letterRender();
+      str += currentLetter;
+    })
+
+    console.log(str);
   }
 
 }
