@@ -30,11 +30,12 @@ module.exports = function(wrd){
     });
   }
 
+  // Check each object in lets array to see if every one of their appear property is set to true
   this.didWeFindTheWord = function(){
     self.lets.every(function(curLet){
       if(curLet.appear === true){
-        this.found = true;
-        return self.found
+        self.found = true;
+        return self.found;
       }
     });
   }
