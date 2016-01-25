@@ -50,6 +50,7 @@ module.exports = function(wrd){
     });
 
     console.log(str);
+    return str;
   }
 
 }
