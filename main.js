@@ -11,12 +11,22 @@ var game = {
   guessesRemaining: 10,
   currentWrd: null,
 
+  // startGame method: Gets random string from wordbank array and creates new word object
   startGame: function(wrd){
     currentWrd = new Word(this.wordBank[Math.floor(Math.random() * this.wordBank.length)]);
     currentWrd.getLets();
+    keepPromptingUser();
     // TODO Remove console log below when done testing.
     console.log(currentWrd);
   }
+
+  keepPromptingUser: function(){
+    var self = this;
+
+    // Finish prompt call below
+    prompt.get();
+  }
+
 }
 
 game.startGame();
