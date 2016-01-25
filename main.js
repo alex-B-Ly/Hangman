@@ -1,4 +1,4 @@
-var Word = require('./word.js');
+var Word = require('./Word.js');
 
 // cat test
 var cat = new Word('cat');
