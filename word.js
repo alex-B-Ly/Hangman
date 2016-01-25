@@ -47,7 +47,7 @@ module.exports = function(wrd){
     self.lets.forEach(function(letter){
       var currentLetter = letter.letterRender();
       str += currentLetter;
-    })
+    });
 
     console.log(str);
   }
