@@ -24,9 +24,6 @@ module.exports = function(wrd){
     self.lets.forEach(function(letter){
       if(letter.charac === guessLetter){
         letter.appear = true;
-        console.log('Found one!');
-      }else{
-        console.log('Try Again.');
       }
     });
   }
@@ -49,7 +46,6 @@ module.exports = function(wrd){
       str += currentLetter;
     });
 
-    console.log(str);
     return str;
   }
 

@@ -15,16 +15,33 @@ var game = {
   startGame: function(wrd){
     currentWrd = new Word(this.wordBank[Math.floor(Math.random() * this.wordBank.length)]);
     currentWrd.getLets();
-    keepPromptingUser();
+    this.keepPromptingUser();
     // TODO Remove console log below when done testing.
     console.log(currentWrd);
-  }
+  },
 
   keepPromptingUser: function(){
     var self = this;
 
-    // Finish prompt call below
-    prompt.get();
+    prompt.get(['guessLetter'], function(err, result){
+      console.log('The letter or space you guessed is ' + result.guessLetter);
+      var findHowManyOfUserGuess = self.currentWrd.checkIfLetterFound(result.guessLetter);
+
+      if(findHowManyOfUserGuess === 0){
+        console.log('You guessed wrong.');
+        guessesRemaining--;
+      }else{
+        console.log('You guessed right.');
+        // Check if game has been won
+        if(self.currentWrd.didWeFindTheWord() === true){
+          console.log('You won!');
+          return 1;
+        }else{
+          console.log('Guesses remaining: '+self.guessesRemaining);
+          console.log(self.currentWrd.wordRender());
+        }
+      }
+    });
   }
 
 }
