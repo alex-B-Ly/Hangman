@@ -30,12 +30,11 @@ module.exports = function(wrd){
 
   // Check each object in lets array to see if every one of their appear property is set to true
   this.didWeFindTheWord = function(){
-    self.lets.every(function(curLet){
-      if(curLet.appear === true){
-        self.found = true;
-        return self.found;
-      }
-    });
+    if(this.lets.every(function(curLet){
+      return curLet.appear === true;
+    })){
+      return true;
+    }
   }
 
   this.wordRender = function(){
