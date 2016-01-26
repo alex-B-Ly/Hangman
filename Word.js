@@ -16,16 +16,16 @@ module.exports = function(wrd){
   }
 
   // Iterate over lets array and check if guess is equal to charac property
-    // TODO Inquire about adding 1 to checkIfLetterFound, did they mean whatToReturn?
-    // TODO Get rid of console logs
   this.checkIfLetterFound = function(guessLetter){
     var whatToReturn = 0;
 
     self.lets.forEach(function(letter){
       if(letter.charac === guessLetter){
         letter.appear = true;
+        whatToReturn++;
       }
     });
+    return whatToReturn;
   }
 
   // Check each object in lets array to see if every one of their appear property is set to true

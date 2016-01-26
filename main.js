@@ -7,17 +7,15 @@ prompt.start();
 
 // Game object
 var game = {
-  wordBank: ['anaphylaxis', 'mitochondrion', 'opossum'],
+  wordBank: ['rat', 'cat', 'bat'],
   guessesRemaining: 10,
   currentWrd: null,
 
   // startGame method: Gets random string from wordbank array and creates new word object
   startGame: function(wrd){
-    currentWrd = new Word(this.wordBank[Math.floor(Math.random() * this.wordBank.length)]);
-    currentWrd.getLets();
+    this.currentWrd = new Word(this.wordBank[Math.floor(Math.random() * this.wordBank.length)]);
+    this.currentWrd.getLets();
     this.keepPromptingUser();
-    // TODO Remove console log below when done testing.
-    console.log(currentWrd);
   },
 
   keepPromptingUser: function(){
@@ -29,7 +27,7 @@ var game = {
 
       if(findHowManyOfUserGuess === 0){
         console.log('You guessed wrong.');
-        guessesRemaining--;
+        self.guessesRemaining--;
       }else{
         console.log('You guessed right.');
         // Check if game has been won
@@ -41,15 +39,18 @@ var game = {
           console.log(self.currentWrd.wordRender());
         }
       }
+      if(self.guessesRemaining>0 && self.currentWrd.found === false){
+        self.keepPromptingUser();
+      }else if(self.guessesRemaining === 0){
+        console.log('Game over, bro.');
+        console.log(self.currentWrd.word);
+      }else{
+        console.log(self.currentWrd.wordRender());
+      }
+
     });
   }
 
 }
-
+debugger;
 game.startGame();
-
-// cat test
-// var cat = new Word('cat');
-// cat.getLets();
-// cat.checkIfLetterFound('a');
-// cat.wordRender();
