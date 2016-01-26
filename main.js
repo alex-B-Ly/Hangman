@@ -39,11 +39,12 @@ var game = {
           console.log(self.currentWrd.wordRender());
         }
       }
+
       if(self.guessesRemaining>0 && self.currentWrd.found === false){
         self.keepPromptingUser();
       }else if(self.guessesRemaining === 0){
-        console.log('Game over, bro.');
-        console.log(self.currentWrd.word);
+        console.log('Game over.');
+        console.log('The word was: ' + self.currentWrd.word);
       }else{
         console.log(self.currentWrd.wordRender());
       }
